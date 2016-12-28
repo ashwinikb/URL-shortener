@@ -1,16 +1,24 @@
 package io.ashwinikb;
 
 public class Url {
-	
-	    private String content;
 
-	    public String getContent() {
-	        return content;
-	    }
+	private String fullURL;
+	private String shortURL;
 
-	    public void setContent(String content) {
-	        this.content = content;
-	    }
+	public String getFullURL() {
+		return fullURL;
+	}
 
+	public void setFullURL(String fullURL) {
+		this.fullURL = fullURL;
+	}
+
+	public String getShortURL() {
+		return shortURL;
+	}
+
+	public void setShortURL(String shortURL) {
+		this.shortURL = shortURL;
+	}
 
 }

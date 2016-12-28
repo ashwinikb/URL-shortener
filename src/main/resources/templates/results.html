@@ -7,7 +7,8 @@
 <body>
 	<h1>Short URL</h1>
      
-    <p th:text="'content: ' + ${url.content}" />
+     <p th:text="'Full URL ' + ${url.fullURL}" />
+    <p th:text="'Short URL ' + ${url.shortURL}" />
     
     <a href="/shorturl">Short Another URL?</a>
         
