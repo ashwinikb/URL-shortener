@@ -29,7 +29,7 @@ public class URLController {
 
 		url.setShortURL(finalURL);
 		url.setFullURL(url.getFullURL());
-
+		
 		database.put(url.getShortURL(), url.getFullURL());
 
 		System.out.println("Contents of Database");
@@ -43,5 +43,8 @@ public class URLController {
 
 		return "results";
 	}
-
+	
 }
+
+
+
