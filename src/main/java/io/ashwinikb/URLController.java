@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class URLController {
 
 	Map<String, String> database = new HashMap<String, String>();
+//	MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
+
+
 
 	@RequestMapping("/shorturl")
 	public String shortURL(Model model) {
