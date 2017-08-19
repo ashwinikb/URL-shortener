@@ -32,21 +32,20 @@ public class URLController {
 	public String shortThisURL(@ModelAttribute Url url) {
 		String hash = ShortUrlUtil.hash(url.getFullURL());
 		String baseURL = "localhost:8080/";
-		String finalURL = baseURL + hash;
+		String shortURL = baseURL + hash;
 
-		url.setShortURL(finalURL);
-		url.setFullURL(url.getFullURL());
-		
+		url.setShortURL(shortURL);
+
 		database.put(hash, url.getFullURL());
 
-		System.out.println("Contents of Database");
-		Iterator<Entry<String, String>> iterator = database.entrySet().iterator();
-
-		while (iterator.hasNext()) {
-			Entry<String, String> next = iterator.next();
-			System.out.println("[" + next.getKey() + "," + next.getValue() + "]");
-
-		}
+//		System.out.println("Contents of Database");
+//		Iterator<Entry<String, String>> iterator = database.entrySet().iterator();
+//
+//		while (iterator.hasNext()) {
+//			Entry<String, String> next = iterator.next();
+//			System.out.println("[" + next.getKey() + "," + next.getValue() + "]");
+//
+//		}
 
 		return "results";
 	}
