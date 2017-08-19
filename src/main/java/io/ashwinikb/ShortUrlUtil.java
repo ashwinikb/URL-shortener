@@ -1,10 +1,24 @@
 package io.ashwinikb;
 
+import java.nio.charset.StandardCharsets;
+
+import com.google.common.hash.Hashing;
+
+/**
+ * 
+ * @author Ashwini KB
+ *
+ */
 public class ShortUrlUtil {
 
+	/**
+	 * Calculates hash for long URL
+	 * 
+	 * @param url
+	 * @return
+	 */
 	public static String hash(String url) {
-		int hashcode = url.hashCode();
-		return Integer.toString(hashcode);
+		return Hashing.murmur3_32().hashString(url, StandardCharsets.UTF_8).toString();
 	}
 
 }
