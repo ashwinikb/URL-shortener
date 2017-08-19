@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class URLController {
+
+	private ApplicationProperties applicationProperties;
+
+	@Autowired
+	public void setApp(ApplicationProperties applicationProperties) {
+		this.applicationProperties = applicationProperties;
+	}
 
 	Map<String, String> database = new HashMap<String, String>();
 	// MongoClient mongoClient = new MongoClient(new
@@ -30,7 +38,7 @@ public class URLController {
 	@RequestMapping("/short")
 	public String shortThisURL(@ModelAttribute Url url) {
 		String hash = ShortUrlUtil.hash(url.getFullURL());
-		String baseURL = "localhost:8080/";
+		String baseURL = applicationProperties.baseURI;
 		String shortURL = baseURL + hash;
 
 		url.setShortURL(shortURL);
