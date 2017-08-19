@@ -18,7 +18,7 @@ public class URLController {
 
 
 
-	@RequestMapping("/shorturl")
+	@RequestMapping("/")
 	public String shortURL(Model model) {
 		model.addAttribute("url", new Url());
 		return "shortURL";
