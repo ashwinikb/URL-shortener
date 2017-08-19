@@ -5,10 +5,14 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class URLController {
@@ -24,7 +28,7 @@ public class URLController {
 		return "shortURL";
 	}
 
-	@RequestMapping("/short-this-url")
+	@RequestMapping("/short")
 	public String shortThisURL(@ModelAttribute Url url) {
 		String hash = ShortUrlUtil.hash(url.getFullURL());
 		String baseURL = "localhost:8080/";
@@ -33,7 +37,7 @@ public class URLController {
 		url.setShortURL(finalURL);
 		url.setFullURL(url.getFullURL());
 		
-		database.put(url.getShortURL(), url.getFullURL());
+		database.put(hash, url.getFullURL());
 
 		System.out.println("Contents of Database");
 		Iterator<Entry<String, String>> iterator = database.entrySet().iterator();
@@ -46,6 +50,18 @@ public class URLController {
 
 		return "results";
 	}
+	
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public void redirect(@PathVariable String id, HttpServletResponse resp) throws Exception {
+//        final String url = redis.opsForValue().get(id);
+      final String url = database.get(id);
+
+        if (url != null)
+            resp.sendRedirect(url);
+        else
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+    }
 	
 }
 

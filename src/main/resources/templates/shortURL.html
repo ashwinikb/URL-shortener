@@ -1,18 +1,21 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Getting Started: Serving Web Content</title>
+<title>URL Shortener</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<h3>URL Shortener</h3>
 
-	<form action="#" th:action="@{short-this-url}" th:object="${url}" method="post">
-		<p>Enter the URL: <input type="text" th:field="*{fullURL}" /></p>
+	<form action="#" th:action="@{short}" th:object="${url}" method="post">
+		<p>
+			Enter the URL: <input type="text" th:field="*{fullURL}" />
+		</p>
 		
 		<p>	
-		<input type="submit" value="Submit" />
-		 <input type="reset"	value="Reset" /></p>
+			<input type="submit" value="Submit" />
+			<input type="reset"	value="Reset" />
+		</p>
 	</form>
 
 </body>
