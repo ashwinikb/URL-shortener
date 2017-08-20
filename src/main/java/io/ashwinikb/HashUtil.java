@@ -5,9 +5,7 @@ import java.nio.charset.StandardCharsets;
 import com.google.common.hash.Hashing;
 
 /**
- * 
  * @author Ashwini KB
- *
  */
 public class HashUtil {
 

@@ -1,5 +1,9 @@
 package io.ashwinikb;
 
+/**
+ * @author Ashwini KB
+ */
+
 public class URLModel {
 
 	private String hash;
