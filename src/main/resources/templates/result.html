@@ -6,12 +6,13 @@
 </head>
 <body>
 	<h1>Short URL</h1>
-	<a th:href = "${url.fullURL}" th:text = "'FullURL: ' + ${url.fullURL} "> </a>
-	
+
+	<a target="_blank" th:href="${urlModel.baseURI} + ${urlModel.hash}" th:text ="${urlModel.baseURI} + ${urlModel.hash}"></a>
 	<br/>
-	
-	<a th:href="${url.shortURL}" th:text ="'ShortURL: ' + ${url.shortURL}"></a>
-  
+	<br/>
+
+	<a th:href = "${urlModel.url}" th:text = "'FullURL: ' + ${urlModel.url} "> </a>
+	<br/>
 	<br/>
     
     <a href="/">Short Another URL?</a>

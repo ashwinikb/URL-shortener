@@ -9,7 +9,7 @@ import com.google.common.hash.Hashing;
  * @author Ashwini KB
  *
  */
-public class ShortUrlUtil {
+public class HashUtil {
 
 	/**
 	 * Calculates hash for long URL

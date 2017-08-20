@@ -7,9 +7,9 @@
 <body>
 	<h3>URL Shortener</h3>
 
-	<form action="#" th:action="@{short}" th:object="${url}" method="post">
+	<form action="#" th:action="@{short}" th:object="${urlModel}" method="post">
 		<p>
-			Enter the URL: <input type="text" th:field="*{fullURL}" />
+			Enter the URL: <input type="text" th:field="*{url}" />
 		</p>
 		
 		<p>	

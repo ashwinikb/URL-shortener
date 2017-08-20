@@ -1,10 +1,5 @@
 package io.ashwinikb;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,55 +14,63 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class URLController {
 
 	private ApplicationProperties applicationProperties;
+	private URLRepository urlRepository;
 
 	@Autowired
 	public void setApp(ApplicationProperties applicationProperties) {
 		this.applicationProperties = applicationProperties;
 	}
 
-	Map<String, String> database = new HashMap<String, String>();
-	// MongoClient mongoClient = new MongoClient(new
-	// MongoClientURI("mongodb://localhost:27017"));
+	@Autowired
+	public void setURLRepository(URLRepository urlRepository) {
+		this.urlRepository = urlRepository;
+	}
 
 	@RequestMapping("/")
-	public String shortURL(Model model) {
-		model.addAttribute("url", new Url());
-		return "shortURL";
+	public String home(Model model) {
+		model.addAttribute("urlModel", new URLModel());
+		return "home";
 	}
 
 	@RequestMapping("/short")
-	public String shortThisURL(@ModelAttribute Url url) {
-		String hash = ShortUrlUtil.hash(url.getFullURL());
-		String baseURL = applicationProperties.baseURI;
-		String shortURL = baseURL + hash;
+	public String shortUrl(Model model,@ModelAttribute URLModel urlModel) {
+		String hash = HashUtil.hash(urlModel.getUrl());
+		String baseURI = applicationProperties.baseURI;
 
-		url.setShortURL(shortURL);
+		urlModel.setHash(hash);
+		urlModel.setBaseURI(baseURI);
 
-		database.put(hash, url.getFullURL());
+		//urlRepository.deleteAll();
 
-		// System.out.println("Contents of Database");
-		// Iterator<Entry<String, String>> iterator =
-		// database.entrySet().iterator();
-		//
-		// while (iterator.hasNext()) {
-		// Entry<String, String> next = iterator.next();
-		// System.out.println("[" + next.getKey() + "," + next.getValue() +
-		// "]");
-		//
-		// }
+		URLData domain = urlRepository.findFirstByHash(hash);
+		if (domain != null && !domain.getUrl().isEmpty()) {
+			System.out.println(domain.getHash());
+			System.out.println(domain.getUrl());
+		} else {
+			URLData d = new URLData();
+			d.setHash(hash);
+			d.setUrl(urlModel.getUrl());
+			urlRepository.save(d);
+		}
 
-		return "results";
+		System.out.println(urlRepository.count());
+
+		model.addAttribute("urlModel", urlModel);
+
+		return "result";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public void redirect(@PathVariable String id, HttpServletResponse resp) throws Exception {
-		// final String url = redis.opsForValue().get(id);
-		final String url = database.get(id);
 
-		if (url != null)
+		URLData domain = urlRepository.findFirstByHash(id);
+		String url = domain.getUrl();
+
+		if (url != null) {
 			resp.sendRedirect(url);
-		else
+		} else {
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+		}
 	}
 
 }
