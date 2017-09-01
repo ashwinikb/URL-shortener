@@ -33,6 +33,7 @@ public class URLController {
 	@RequestMapping("/")
 	public String home(Model model) {
 		model.addAttribute("urlModel", new URLModel());
+		urlRepository.deleteAll();
 		return "home";
 	}
 
@@ -44,7 +45,6 @@ public class URLController {
 		urlModel.setHash(hash);
 		urlModel.setBaseURI(baseURI);
 
-		//urlRepository.deleteAll();
 
 		URLData domain = urlRepository.findFirstByHash(hash);
 		if (domain != null && !domain.getUrl().isEmpty()) {
