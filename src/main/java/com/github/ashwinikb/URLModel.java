@@ -1,4 +1,4 @@
-package io.ashwinikb;
+package com.github.ashwinikb;
 
 /**
  * @author Ashwini KB

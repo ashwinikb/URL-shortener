@@ -1,4 +1,4 @@
-package io.ashwinikb;
+package com.github.ashwinikb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

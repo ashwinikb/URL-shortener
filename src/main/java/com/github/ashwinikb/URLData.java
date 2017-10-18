@@ -1,4 +1,4 @@
-package io.ashwinikb;
+package com.github.ashwinikb;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
