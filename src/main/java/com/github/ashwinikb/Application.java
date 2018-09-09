@@ -5,10 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Main class to bootstrap spring boot app
- * 
- * @author Ashwini KB
  */
-
 @SpringBootApplication
 public class Application {
 

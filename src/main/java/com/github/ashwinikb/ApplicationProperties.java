@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * @author Ashwini KB
+ * Application config bean
  */
-
 @Component
 public class ApplicationProperties {
 

@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * @author Ashwini KB
+ * URL Model used integrate with Mongo
  */
 
 @Document(collection = "urlData")

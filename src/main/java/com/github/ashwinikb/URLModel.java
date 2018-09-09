@@ -1,7 +1,7 @@
 package com.github.ashwinikb;
 
 /**
- * @author Ashwini KB
+ * URL Model used integrate with UI
  */
 
 public class URLModel {

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * @author Ashwini KB
+ * Sets up URL end points for this application
  */
 
 @Controller
@@ -38,15 +38,14 @@ public class URLController {
 	}
 
 	@RequestMapping("/short")
-	public String shortUrl(Model model,@ModelAttribute URLModel urlModel) {
-		String hash = HashUtil.hash(urlModel.getUrl());
-		String baseURI = applicationProperties.baseURI;
+	public String shortUrl(Model model, @ModelAttribute URLModel urlModel) {
+		var hash = HashUtil.hash(urlModel.getUrl());
+		var baseURI = applicationProperties.baseURI;
 
 		urlModel.setHash(hash);
 		urlModel.setBaseURI(baseURI);
 
-
-		URLData domain = urlRepository.findFirstByHash(hash);
+		var domain = urlRepository.findFirstByHash(hash);
 		if (domain != null && !domain.getUrl().isEmpty()) {
 			System.out.println(domain.getHash());
 			System.out.println(domain.getUrl());
@@ -67,8 +66,8 @@ public class URLController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public void redirect(@PathVariable String id, HttpServletResponse resp) throws Exception {
 
-		URLData domain = urlRepository.findFirstByHash(id);
-		String url = domain.getUrl();
+		var domain = urlRepository.findFirstByHash(id);
+		var url = domain.getUrl();
 
 		if (url != null) {
 			resp.sendRedirect(url);
