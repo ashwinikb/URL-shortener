@@ -3,15 +3,17 @@
 
 A web app to shorten URL's
 
- 
 
-1. Update Mongodb instance details under application.properties (If different)   
+##### Setup
+Update Mongodb instance details under application.properties (If different)   
 
-2. Start Mongodb
+##### Start Mongodb
 mongod
 
-3. Start App 
+##### Start App 
 mvn spring-boot:run
 
-4. Test 
+##### Test 
 localhost:8080
+localhost:8080/actuator/
+localhost:8080/actuator/health
