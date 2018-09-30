@@ -1,4 +1,4 @@
-package com.github.ashwinikb;
+package com.github.ashwinikb.model;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

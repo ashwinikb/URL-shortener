@@ -1,4 +1,4 @@
-package com.github.ashwinikb;
+package com.github.ashwinikb.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.github.ashwinikb.ApplicationProperties;
+import com.github.ashwinikb.model.URLData;
+import com.github.ashwinikb.model.URLModel;
+import com.github.ashwinikb.model.URLRepository;
+import com.github.ashwinikb.util.HashUtil;
 
 /**
  * Sets up URL end points for this application

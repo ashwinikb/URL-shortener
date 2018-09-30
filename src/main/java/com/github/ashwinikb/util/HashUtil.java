@@ -1,4 +1,4 @@
-package com.github.ashwinikb;
+package com.github.ashwinikb.util;
 
 import java.nio.charset.StandardCharsets;
 

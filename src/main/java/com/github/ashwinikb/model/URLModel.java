@@ -1,4 +1,4 @@
-package com.github.ashwinikb;
+package com.github.ashwinikb.model;
 
 /**
  * URL Model used integrate with UI
