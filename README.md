@@ -1,6 +1,6 @@
 # URL-shortener [![Build Status](https://travis-ci.org/ashwinikb/url-shortener.svg?branch=master)](https://travis-ci.org/ashwinikb/url-shortener/)
 
-A web based tool to shorten URL's. Built using springboot.
+A web app to shorten URL's
 
 ##### Setup
 ```
