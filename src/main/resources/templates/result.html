@@ -3,26 +3,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>URL Shortener</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet"
-		href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" />
+<title>URL Shortener</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/app.css" />
 </head>
 
 <body>
-	<h1>Short URL</h1>
 
-	<a target="_blank" th:href="${urlModel.baseURI} + ${urlModel.hash}"
-		th:text="${urlModel.baseURI} + ${urlModel.hash}"></a>
-	<br />
-	<br />
 
-	<a th:href="${urlModel.url}" th:text="'FullURL: ' + ${urlModel.url} ">
-	</a>
-	<br />
-	<br />
+	<div class="content">
+		<h3>Short URL</h3>
 
-	<a href="/">Short Another URL?</a>
+		<a target="_blank" th:href="${urlModel.baseURI} + ${urlModel.hash}"
+			th:text="${urlModel.baseURI} + ${urlModel.hash}"></a> <br /> <br />
+
+		<a th:href="${urlModel.url}" th:text="'FullURL: ' + ${urlModel.url} ">
+		</a> <br /> <br /> <a href="/">Short Another URL?</a>
+	</div>
+
 	<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script src="/webjars/popper.js/1.14.4/popper.min.js"></script>

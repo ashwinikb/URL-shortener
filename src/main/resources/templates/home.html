@@ -3,38 +3,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<style type="text/css">
-		body {
-			background: grey !important;
-			}
-	</style>
-	<title>URL Shortener</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	 <link rel="stylesheet" href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" />
+<title>URL Shortener</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+ 
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" />
+ 
+<link rel="stylesheet" href="/css/app.css" />
 </head>
 
 <body>
-	<h3>URL Shortener</h3>
 
-	<form action="#" th:action="@{short}" th:object="${urlModel}"
-		method="post">
-		<p>
-			Enter the URL: <input type="text" th:field="*{url}" />
-		</p>
+	<div class="content">
 
-		<p>
-			<input type="submit" value="Submit" /> <input type="reset"
-				value="Reset" />
-		</p>
-	</form>
+		<h3 align="center">URL Shortener</h3>
+
+		<div align="center" class="url-input">
+
+			<form align="center" action="#" th:action="@{short}"
+				th:object="${urlModel}" method="post">
+				<h4 align="left">Enter an URL</h4>
+
+				<p>
+					<input align="center" type="text" size="80" value="Enter the URL"
+						th:field="*{url}" />
+				</p>
+
+				<p>
+					<input type="submit" value="Submit" /> <input type="reset"
+						value="Reset" />
+				</p>
+			</form>
 
 
-	<span th:text="${name}" />
+			<span th:text="${name}" />
+		</div>
+	</div>
 
 	<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap//4.1.3/js/bootstrap.min.js"></script>
-	<script src="/webjars/popper.js/1.14.4/popper.min.js" ></script>
-	
+	<script src="/webjars/popper.js/1.14.4/popper.min.js"></script>
+
 </body>
 </html>
